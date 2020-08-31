@@ -1,19 +1,19 @@
 syntax = "proto3";
 
 import "daemon/common.proto";
-import "hyperdrive.proto";
+import "ddrive.proto";
 
 // Cross-drive operations
 
 /**
- * Create a session for a hyperdrive by key, version, and hash.
+ * Create a session for a ddrive by key, version, and hash.
  */
 message GetDriveRequest {
-  HyperdriveOptions opts = 1; // Hyperdrive options.
+  HyperdriveOptions opts = 1; // DDrive options.
 }
 message GetDriveResponse {
   uint64 id = 1; // A new session ID.
-  HyperdriveOptions opts = 2; // Hyperdrive options.
+  HyperdriveOptions opts = 2; // DDrive options.
 }
 
 /**
@@ -91,7 +91,7 @@ message DriveMountsResponse {
 // Drive operations
 
 /**
- * Hyperdrive.version
+ * DDrive.version
  *
  * Get the version of a drive.
  */
@@ -170,7 +170,7 @@ message DeleteMetadataRequest {
 message DeleteMetadataResponse {}
 
 /**
- * Hyperdrive.createDiffStream
+ * DDrive.createDiffStream
  *
  * Create a diff stream between two versions, optionally within a specified prefix.
  */
@@ -186,7 +186,7 @@ message DiffStreamResponse {
 }
 
 /**
- * Hyperdrive.open
+ * DDrive.open
  *
  * Opens a file descriptor.
  */
@@ -200,7 +200,7 @@ message OpenResponse {
 }
 
 /**
- * Hyperdrive.download
+ * DDrive.download
  *
  * Downloads file or directory contents.
  */
@@ -213,7 +213,7 @@ message DownloadResponse {
 }
 
 /**
- * Hyperdrive.undownload
+ * DDrive.undownload
  *
  * Stop a download that's in progress.
  */
@@ -223,7 +223,7 @@ message UndownloadRequest {
 }
 message UndownloadResponse {}
 
-// Hyperdrive.close (closes either a file descriptor or the whole drive).
+// DDrive.close (closes either a file descriptor or the whole drive).
 message CloseRequest {
   uint64 id = 1;
   uint32 fd = 2;
@@ -252,14 +252,14 @@ message ReadResponse {
   bytes content = 1;
 }
 
-// Hyperdrive.unlink
+// DDrive.unlink
 message UnlinkRequest {
   uint64 id = 1;
   string path = 2;
 }
 message UnlinkResponse {}
 
-// Hyperdrive.readdir
+// DDrive.readdir
 message ReadDirectoryRequest {
   uint64 id = 1;
   string path = 2;
@@ -274,7 +274,7 @@ message ReadDirectoryResponse {
   repeated string innerPaths = 4;
 }
 
-// Hyperdrive.mkdir
+// DDrive.mkdir
 message MkdirRequest {
   uint64 id = 1;
   string path = 2;
@@ -282,14 +282,14 @@ message MkdirRequest {
 }
 message MkdirResponse {}
 
-// Hyperdrive.rmdir
+// DDrive.rmdir
 message RmdirRequest {
   uint64 id = 1;
   string path = 2;
 }
 message RmdirResponse {}
 
-// Hyperdrive.stat
+// DDrive.stat
 message StatRequest {
   uint64 id = 1;
   string path = 2;
@@ -299,28 +299,28 @@ message StatResponse {
   Stat stat = 1;
 }
 
-// Hyperdrive.watch
+// DDrive.watch
 message WatchRequest {
   uint64 id = 1;
   string path = 2;
 }
 message WatchResponse {}
 
-// Hyperdrive.mount
+// DDrive.mount
 message MountDriveRequest {
   uint64 id = 1;
   MountInfo info = 2;
 }
 message MountDriveResponse {}
 
-// Hyperdrive.unmount
+// DDrive.unmount
 message UnmountDriveRequest {
   uint64 id = 1;
   string path = 2;
 }
 message UnmountDriveResponse {}
 
-// Hyperdrive.symlink
+// DDrive.symlink
 message SymlinkRequest {
   uint64 id = 1;
   string target = 2;
@@ -328,7 +328,7 @@ message SymlinkRequest {
 }
 message SymlinkResponse {}
 
-// Hyperdrive.fileStats
+// DDrive.fileStats
 message FileStatsRequest {
   uint64 id = 1;
   string path = 2;

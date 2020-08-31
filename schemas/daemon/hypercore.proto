@@ -4,10 +4,10 @@ import "daemon/common.proto";
 import "daemon/drive.proto";
 
 /**
- * Opens a hypercore session.
+ * Opens a ddatabase session.
  */
 message GetCoreRequest {
-  HypercoreOptions opts  = 1; // Hypercore options.
+  HypercoreOptions opts  = 1; // DDatabase options.
 }
 message GetCoreResponse {
   uint64 id = 1; // A new session ID.
@@ -15,7 +15,7 @@ message GetCoreResponse {
 }
 
 /**
- * Hypercore.length
+ * DDatabase.length
  */
 message LengthRequest {
   uint64 id = 1;
@@ -25,7 +25,7 @@ message LengthResponse {
 }
 
 /**
- * Hypercore.append
+ * DDatabase.append
  */
 message AppendRequest {
   repeated bytes blocks = 1;
@@ -33,7 +33,7 @@ message AppendRequest {
 message AppendResponse {}
 
 /**
- * Hypercore.get
+ * DDatabase.get
  */
 message GetRequest {
   uint64 start = 1;
@@ -44,12 +44,12 @@ message GetResponse {
   repeated bytes blocks = 1;
 }
 
-service Hypercore {
+service DDatabase {
   // Management methods.
   rpc get (GetCoreRequest) returns (GetCoreResponse);
   rpc close (CloseSessionRequest) returns (CloseSessionResponse);
 
-  // Hypercore operations.
+  // DDatabase operations.
   rpc length (LengthRequest) returns (LengthResponse);
   rpc append (AppendRequest) returns (AppendResponse);
   rpc getBlocks (GetRequest) returns (GetResponse);

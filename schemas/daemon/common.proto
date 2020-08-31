@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "hyperdrive.proto";
+import "ddrive.proto";
 
 message Profile {
   string name = 1;

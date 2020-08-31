@@ -24,6 +24,6 @@ message StatusResponse {
   bytes noiseKey = 13;
 }
 
-service Hyperdrive {
+service DDrive {
   rpc status (StatusRequest) returns (StatusResponse);
 }

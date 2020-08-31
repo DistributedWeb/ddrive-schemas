@@ -1,2 +1,2 @@
-# hyperdrive-schemas
-Protobuf/gRPC schemas for the Hyperdrive API.
+# ddrive-schemas
+Protobuf/gRPC schemas for the DDrive API.
