@@ -1,0 +1,30 @@
+{
+  "name": "ddrive-schemas",
+  "version": "3.0.0",
+  "description": "Protobuf schemas for DDrive and its daemon.",
+  "main": "index.js",
+  "scripts": {
+    "build": "protocol-buffers schemas/ddrive.proto -o lib/messages.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewosh/ddrive-schemas.git"
+  },
+  "keywords": [
+    "ddrive",
+    "protobuf",
+    "schema"
+  ],
+  "author": "Andrew Osheroff <andrewosh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrewosh/ddrive-schemas/issues"
+  },
+  "homepage": "https://github.com/andrewosh/ddrive-schemas#readme",
+  "devDependencies": {
+    "protocol-buffers": "^4.1.0"
+  },
+  "dependencies": {
+    "protocol-buffers-encodings": "^1.1.0"
+  }
+}

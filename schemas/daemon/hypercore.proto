@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+import "daemon/common.proto";
+import "daemon/drive.proto";
+
+/**
+ * Opens a ddatabase session.
+ */
+message GetCoreRequest {
+  HypercoreOptions opts  = 1; // DDatabase options.
+}
+message GetCoreResponse {
+  uint64 id = 1; // A new session ID.
+  HypercoreOptions opts = 2;
+}
+
+/**
+ * DDatabase.length
+ */
+message LengthRequest {
+  uint64 id = 1;
+}
+message LengthResponse {
+  uint64 length = 1;
+}
+
+/**
+ * DDatabase.append
+ */
+message AppendRequest {
+  repeated bytes blocks = 1;
+}
+message AppendResponse {}
+
+/**
+ * DDatabase.get
+ */
+message GetRequest {
+  uint64 start = 1;
+  uint64 end = 2;
+  repeated uint64 seqs = 3;
+}
+message GetResponse {
+  repeated bytes blocks = 1;
+}
+
+service DDatabase {
+  // Management methods.
+  rpc get (GetCoreRequest) returns (GetCoreResponse);
+  rpc close (CloseSessionRequest) returns (CloseSessionResponse);
+
+  // DDatabase operations.
+  rpc length (LengthRequest) returns (LengthResponse);
+  rpc append (AppendRequest) returns (AppendResponse);
+  rpc getBlocks (GetRequest) returns (GetResponse);
+  /*
+  rpc createReadStream (ReadStreamRequest) returns (stream ReadStreamResponse);
+  rpc createWriteStream (stream WriteStreamRequest) returns (WriteStreamResponse);
+  */
+}
