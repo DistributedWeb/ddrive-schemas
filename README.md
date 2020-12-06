@@ -1,2 +1,2 @@
 # ddrive-schemas
-Protobuf/gRPC schemas for the DDrive API.
+Protobuf/gRPC schemas for the dDrive API.
